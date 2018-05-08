@@ -11,50 +11,52 @@ import Firebase
 
 class ChangeEmailViewController: UIViewController {
     var email: String? = nil
-  
+    let user = Auth.auth().currentUser
     @IBOutlet weak var currentUserEmail: UILabel!
     
   
     @IBOutlet weak var newEmail: UITextField!
 
-    @IBOutlet weak var newPassword: UITextField!
+
+    @IBOutlet weak var repeatEmail: UITextField!
     
 
     @IBAction func changeMailConfirmButton(_ sender: UIButton) {
         let email = newEmail.text
-        let pass = newPassword.text
-     let user = Auth.auth().currentUser
+        let remail = repeatEmail.text
+        
+        if email == remail
+        {
         user?.updateEmail(to: email!) { error in
             if let error = error {
                 print(error)
+                print("Email updation Failure")
                 
             } else {
-                // Email updated.
-             //self.currentUserEmail.text = email
-             user?.updatePassword(to: pass!) { error in
-                    if let error = error {
-                         print(error)
-                    } else {
-                        // Password updated.
-                        print("success")
-
-                }
+              print("Email updation success")
+                let alert = UIAlertController(title: "Email Changed", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Continue", style: .default){
+                    UIAlertAction in
+                    // Insert code to run on button click below
+                    self.dismiss(animated: true, completion: nil)
+                })
+                self.present(alert, animated: true)
+                
             }
-                
-         }
-               }
-  let credential =  EmailAuthProvider.credential(withEmail: email!, password: pass!)
-        user?.reauthenticate(with: credential) { error in
-            if let error = error {
-                print(error)
-                // An error happened.
-            } else {
-                // User re-authenticated.
+            }
             
-                
-            }
         }
-        
+     else
+        {
+            let alert = UIAlertController(title: "Email Mismatch", message: "Please Re-Enter Email.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            self.newEmail.text = ""
+            self.repeatEmail.text = ""
+            
+        }
+
+ 
         
     }
     
@@ -70,7 +72,7 @@ class ChangeEmailViewController: UIViewController {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
-        currentUserEmail.text = email
+        currentUserEmail.text = user?.email
        
        
     }
@@ -79,16 +81,6 @@ class ChangeEmailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

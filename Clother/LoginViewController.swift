@@ -16,14 +16,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     //Label for displaying message
     @IBOutlet weak var messageLabel: UILabel!
-
+/*
     //Prepare method in Segue to transfer Email
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let MenuViewController = segue.destination as? MenuViewController{
             MenuViewController.email = emailTextFieldName.text
         }
     }
-    
+  */
     //Sign In Button - To validate user email and password and perform segue to connect Menu Page
     @IBAction func signIn(_ sender: UIButton) {
         let email = emailTextFieldName.text
@@ -50,7 +50,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.title = " Clother"
         //initialising firebase
-        FirebaseApp.configure()
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
+        
       
     }
 

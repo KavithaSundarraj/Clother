@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class AccountViewController: UIViewController {
   
     var email: String? = nil
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let user = Auth.auth().currentUser
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let ChangeEmailViewController = segue.destination as? ChangeEmailViewController{
             ChangeEmailViewController.email = email
         }
-    }
+    }*/
     
     @IBAction func goToChangeEmailPage(_ sender: UIButton) {
         performSegue(withIdentifier: "goToChangeEmail", sender: sender)
+    }
+    
+    @IBAction func goToChangePasswordPage(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToChangePassword", sender: sender)
     }
     
     @IBOutlet weak var userEmail: UILabel!
@@ -31,8 +36,14 @@ class AccountViewController: UIViewController {
     
  
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        userEmail.text = email
+        super.viewDidLoad()
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
+        
+        userEmail.text = user?.email
 
         // Do any additional setup after loading the view.
     }

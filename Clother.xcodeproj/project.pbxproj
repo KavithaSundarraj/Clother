@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1532B98D209C5BD300521F16 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1532B98C209C5BD300521F16 /* ChangePasswordViewController.swift */; };
 		153342282093225600AF65BD /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153342272093225600AF65BD /* ChangeEmailViewController.swift */; };
 		155A7AC7208485D2000597F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A7AC6208485D2000597F4 /* AppDelegate.swift */; };
 		155A7AC9208485D2000597F4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A7AC8208485D2000597F4 /* MainViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1532B98C209C5BD300521F16 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		153342272093225600AF65BD /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		155A7AC3208485D2000597F4 /* Clother.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clother.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		155A7AC6208485D2000597F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				155A7AC8208485D2000597F4 /* MainViewController.swift */,
 				155A7ACA208485D2000597F4 /* Main.storyboard */,
 				153342272093225600AF65BD /* ChangeEmailViewController.swift */,
+				1532B98C209C5BD300521F16 /* ChangePasswordViewController.swift */,
 				15C59891209204EE008384DE /* AccountViewController.swift */,
 				156844BC208883FE0063BDBF /* MenuViewControllerTableViewCell.swift */,
 				156844BA208882760063BDBF /* MenuViewController.swift */,
@@ -237,6 +240,7 @@
 				155A7ADD2084C10C000597F4 /* LoginViewController.swift in Sources */,
 				156844BB208882760063BDBF /* MenuViewController.swift in Sources */,
 				153342282093225600AF65BD /* ChangeEmailViewController.swift in Sources */,
+				1532B98D209C5BD300521F16 /* ChangePasswordViewController.swift in Sources */,
 				15C59892209204EE008384DE /* AccountViewController.swift in Sources */,
 				156844B9208881310063BDBF /* Collections.swift in Sources */,
 				155A7AC9208485D2000597F4 /* MainViewController.swift in Sources */,

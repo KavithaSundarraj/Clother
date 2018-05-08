@@ -23,12 +23,14 @@ class CreateViewController: UIViewController {
     //Outlet for Message field
     @IBOutlet weak var MessageLabel: UILabel!
     
+    /*
     //Prepare method in Segue to transfer Email
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let MenuViewController = segue.destination as? MenuViewController{
             MenuViewController.email = EmailTextField.text
         }
     }
+    */
     
     //Create Button - Create new user with amail and password and perform segue to Menu page
     @IBAction func createButton(_ sender: UIButton) {
@@ -58,7 +60,10 @@ class CreateViewController: UIViewController {
         // To display title at Navigation bar
         self.title = " Clother"
         //initialising firebase
-        FirebaseApp.configure()
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
+        
        
     }
     
