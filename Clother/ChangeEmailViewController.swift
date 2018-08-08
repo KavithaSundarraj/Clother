@@ -24,7 +24,12 @@ class ChangeEmailViewController: UIViewController {
     @IBAction func changeMailConfirmButton(_ sender: UIButton) {
         let email = newEmail.text
         let remail = repeatEmail.text
-        
+        if (email=="" && remail=="")
+        {
+            let alert = UIAlertController(title: "Please", message: "Enter Email.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
         if email == remail
         {
         user?.updateEmail(to: email!) { error in
@@ -38,7 +43,8 @@ class ChangeEmailViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "Continue", style: .default){
                     UIAlertAction in
                     // Insert code to run on button click below
-                    self.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "EmailUpdatedSegue", sender: self)
                 })
                 self.present(alert, animated: true)
                 
@@ -66,6 +72,14 @@ class ChangeEmailViewController: UIViewController {
     }
     
     
+    //Function to dismiss keyboard
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        //or
+        //self.view.endEditing(true)
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

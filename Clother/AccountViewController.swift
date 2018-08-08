@@ -19,6 +19,16 @@ class AccountViewController: UIViewController {
         }
     }*/
     
+    @IBAction func LogOut(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            performSegue(withIdentifier: "LogOutSegue", sender: self)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+    }
     @IBAction func goToChangeEmailPage(_ sender: UIButton) {
         performSegue(withIdentifier: "goToChangeEmail", sender: sender)
     }

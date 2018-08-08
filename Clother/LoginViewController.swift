@@ -14,30 +14,24 @@ class LoginViewController: UIViewController {
     //Textfields for email and password
     @IBOutlet weak var emailTextFieldName: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    //Label for displaying message
-    @IBOutlet weak var messageLabel: UILabel!
-/*
-    //Prepare method in Segue to transfer Email
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let MenuViewController = segue.destination as? MenuViewController{
-            MenuViewController.email = emailTextFieldName.text
-        }
-    }
-  */
+    
     //Sign In Button - To validate user email and password and perform segue to connect Menu Page
     @IBAction func signIn(_ sender: UIButton) {
         let email = emailTextFieldName.text
         let password = passwordTextField.text
         Auth.auth().signIn(withEmail: email!, password: password!, completion: { (user: User?, error) in
             if error == nil {
-                self.messageLabel.text = "VALID USER"
                 self.performSegue(withIdentifier: "goToMenuPage", sender: self)
             }else{
-                self.messageLabel.text = "INVALID USER, PLEASE TRY AGAIN"
-                self.emailTextFieldName.text = " "
-                self.passwordTextField.text = " "
+                //To perform alert message based on error
+                let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+                //To reset the textfields to empty
+                self.emailTextFieldName.text = ""
+                self.passwordTextField.text = ""
             }
-            
         })
     }
     
@@ -46,15 +40,20 @@ class LoginViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    //Function to dismiss keyboard
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        //or
+        //self.view.endEditing(true)
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = " Clother"
         //initialising firebase
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
-        
-      
     }
 
     override func didReceiveMemoryWarning() {

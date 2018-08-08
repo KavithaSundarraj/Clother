@@ -8,11 +8,15 @@
 
 import Foundation
 class Collections {
+    var id: String?
     var name: String?
     var imageUrl: String?
+    var itemurl: String?
     
-    init(name: String?, imageUrl: String?) {
+    init(id: String?, name: String?, imageUrl: String?, itemurl: String?) {
+        self.id = id
         self.name = name
         self.imageUrl = imageUrl
+        self.itemurl = itemurl
     }
 }

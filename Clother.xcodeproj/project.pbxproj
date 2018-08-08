@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152E66BC20B6B7FA005FEC49 /* items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E66BB20B6B7F9005FEC49 /* items.swift */; };
 		1532B98D209C5BD300521F16 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1532B98C209C5BD300521F16 /* ChangePasswordViewController.swift */; };
 		153342282093225600AF65BD /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153342272093225600AF65BD /* ChangeEmailViewController.swift */; };
+		1538260A20AC51490040ECFC /* CollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538260920AC51490040ECFC /* CollectionsViewController.swift */; };
+		1538260C20AC533E0040ECFC /* TinderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538260B20AC533E0040ECFC /* TinderCard.swift */; };
 		155A7AC7208485D2000597F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A7AC6208485D2000597F4 /* AppDelegate.swift */; };
 		155A7AC9208485D2000597F4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A7AC8208485D2000597F4 /* MainViewController.swift */; };
 		155A7ACC208485D2000597F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 155A7ACA208485D2000597F4 /* Main.storyboard */; };
@@ -17,16 +20,23 @@
 		155A7AD920849000000597F4 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A7AD820849000000597F4 /* CreateViewController.swift */; };
 		155A7ADD2084C10C000597F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A7ADC2084C10C000597F4 /* LoginViewController.swift */; };
 		155D89212091BAF800FE545D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 155D89202091BAF800FE545D /* GoogleService-Info.plist */; };
+		1563A06020B562A5001440F6 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1563A05F20B562A4001440F6 /* FinalViewController.swift */; };
 		156844B9208881310063BDBF /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156844B8208881310063BDBF /* Collections.swift */; };
 		156844BB208882760063BDBF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156844BA208882760063BDBF /* MenuViewController.swift */; };
 		156844BD208883FE0063BDBF /* MenuViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156844BC208883FE0063BDBF /* MenuViewControllerTableViewCell.swift */; };
+		15A6AC1520E7C5EC001C82A1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6AC1420E7C5EC001C82A1 /* InfoViewController.swift */; };
+		15A6AC1720EA3E28001C82A1 /* welcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6AC1620EA3E28001C82A1 /* welcomeViewController.swift */; };
+		15AB70B520CA98FC0007DA2F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB70B420CA98FC0007DA2F /* AboutViewController.swift */; };
 		15C59892209204EE008384DE /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C59891209204EE008384DE /* AccountViewController.swift */; };
 		CBC743445F744927B0846D3E /* Pods_Clother.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB282968733CBCE6D43AF670 /* Pods_Clother.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		152E66BB20B6B7F9005FEC49 /* items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = items.swift; sourceTree = "<group>"; };
 		1532B98C209C5BD300521F16 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		153342272093225600AF65BD /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		1538260920AC51490040ECFC /* CollectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewController.swift; sourceTree = "<group>"; };
+		1538260B20AC533E0040ECFC /* TinderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderCard.swift; sourceTree = "<group>"; };
 		155A7AC3208485D2000597F4 /* Clother.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clother.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		155A7AC6208485D2000597F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		155A7AC8208485D2000597F4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -37,9 +47,13 @@
 		155A7AD820849000000597F4 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		155A7ADC2084C10C000597F4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		155D89202091BAF800FE545D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1563A05F20B562A4001440F6 /* FinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
 		156844B8208881310063BDBF /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
 		156844BA208882760063BDBF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		156844BC208883FE0063BDBF /* MenuViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewControllerTableViewCell.swift; sourceTree = "<group>"; };
+		15A6AC1420E7C5EC001C82A1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		15A6AC1620EA3E28001C82A1 /* welcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeViewController.swift; sourceTree = "<group>"; };
+		15AB70B420CA98FC0007DA2F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		15C59891209204EE008384DE /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		8B4E3DBEBB554EF1C37B5559 /* Pods-Clother.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clother.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clother/Pods-Clother.debug.xcconfig"; sourceTree = "<group>"; };
 		B814C6B1623F659A26C770C5 /* Pods-Clother.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clother.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clother/Pods-Clother.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,11 +93,18 @@
 		155A7AC5208485D2000597F4 /* Clother */ = {
 			isa = PBXGroup;
 			children = (
+				15A6AC1420E7C5EC001C82A1 /* InfoViewController.swift */,
+				1563A05F20B562A4001440F6 /* FinalViewController.swift */,
+				15AB70B420CA98FC0007DA2F /* AboutViewController.swift */,
 				155D89202091BAF800FE545D /* GoogleService-Info.plist */,
 				155A7AC6208485D2000597F4 /* AppDelegate.swift */,
 				156844B8208881310063BDBF /* Collections.swift */,
 				155A7AC8208485D2000597F4 /* MainViewController.swift */,
 				155A7ACA208485D2000597F4 /* Main.storyboard */,
+				15A6AC1620EA3E28001C82A1 /* welcomeViewController.swift */,
+				152E66BB20B6B7F9005FEC49 /* items.swift */,
+				1538260B20AC533E0040ECFC /* TinderCard.swift */,
+				1538260920AC51490040ECFC /* CollectionsViewController.swift */,
 				153342272093225600AF65BD /* ChangeEmailViewController.swift */,
 				1532B98C209C5BD300521F16 /* ChangePasswordViewController.swift */,
 				15C59891209204EE008384DE /* AccountViewController.swift */,
@@ -144,7 +165,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = DSV;
 				TargetAttributes = {
 					155A7AC2208485D1000597F4 = {
@@ -195,16 +216,20 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Clother/Pods-Clother-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLRadioButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,13 +262,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1538260A20AC51490040ECFC /* CollectionsViewController.swift in Sources */,
+				1563A06020B562A5001440F6 /* FinalViewController.swift in Sources */,
 				155A7ADD2084C10C000597F4 /* LoginViewController.swift in Sources */,
 				156844BB208882760063BDBF /* MenuViewController.swift in Sources */,
+				15A6AC1520E7C5EC001C82A1 /* InfoViewController.swift in Sources */,
 				153342282093225600AF65BD /* ChangeEmailViewController.swift in Sources */,
 				1532B98D209C5BD300521F16 /* ChangePasswordViewController.swift in Sources */,
+				15A6AC1720EA3E28001C82A1 /* welcomeViewController.swift in Sources */,
 				15C59892209204EE008384DE /* AccountViewController.swift in Sources */,
 				156844B9208881310063BDBF /* Collections.swift in Sources */,
 				155A7AC9208485D2000597F4 /* MainViewController.swift in Sources */,
+				15AB70B520CA98FC0007DA2F /* AboutViewController.swift in Sources */,
+				1538260C20AC533E0040ECFC /* TinderCard.swift in Sources */,
+				152E66BC20B6B7FA005FEC49 /* items.swift in Sources */,
 				156844BD208883FE0063BDBF /* MenuViewControllerTableViewCell.swift in Sources */,
 				155A7AC7208485D2000597F4 /* AppDelegate.swift in Sources */,
 				155A7AD920849000000597F4 /* CreateViewController.swift in Sources */,
@@ -286,6 +318,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -293,6 +326,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -343,6 +377,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -350,6 +385,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

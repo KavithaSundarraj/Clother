@@ -10,35 +10,69 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-//adding class DataSource and Delegate for our TableView
-class MenuViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var email: String? = nil
+    // Table view outlet
+    @IBOutlet weak var tableView: UITableView!
+    //our table view
+    @IBOutlet weak var MenuTableView: UITableView!
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let AccountViewController = segue.destination as? AccountViewController{
-            AccountViewController.email = email
-        }
-    }
-    
-    @IBAction func goToAccountPage(_ sender: UIButton) {
-      self.performSegue(withIdentifier: "goToAccount", sender: self)
+    //Perform segue to go about page
+    @IBAction func showAboutPage(_ sender: Any) {
+        performSegue(withIdentifier: "showAboutPageSegue", sender: self)
     }
     
     //the Web API URL
-    let URL_GET_DATA = "https://simplifiedcoding.net/demos/marvel/"
-    //our table view
-    @IBOutlet weak var MenuTableView: UITableView!
-  
+    let URL_GET_DATA = "file:///Users/dsv/Desktop/Clother/data.json"
     
-    
-    
-    //a list to store heroes
+    //a list to store collections
     var collectionlists = [Collections]()
-     //the method returning size of the list
+   
+    //To perform segue for loading ItemViewController
+    let itemSegueIdentifier = "ShowItemSegue"
+    let textCellIdentifier = "TextCell"
+    
+    // MARK: - Navigation  -  to pass collections to CollectionsViewController
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  segue.identifier == itemSegueIdentifier,
+            let destination = segue.destination as? CollectionsViewController,
+            let blogIndex = tableView.indexPathForSelectedRow?.row
+        {
+            destination.collectionsId = collectionlists [blogIndex].id!
+            destination.itemsurl = collectionlists [blogIndex].itemurl!
+            print(collectionlists[blogIndex].id!)
+            print("items")
+          print(collectionlists [blogIndex].itemurl!)
+        }
+    }
+    
+    // MARK: - UITextFieldDelegate Methods
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    private func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as UITableViewCell
+        
+        let row = indexPath.row
+        cell.textLabel?.text = collectionlists  [row].id
+        
+        return cell
+    }
+    
+    // MARK: - UITableViewDelegate Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        
+        let row = indexPath.row
+        print(collectionlists[row].id!)
+    }
+    
+    //the method returning size of the list
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return collectionlists.count
     }
+    
     //the method returning each cell of the list
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuViewControllerTableViewCell
@@ -50,7 +84,6 @@ class MenuViewController: UIViewController,UITableViewDataSource, UITableViewDel
         //displaying values
         cell.CollectionName.text = collection.name
        
-        
         //displaying image
         Alamofire.request(collection.imageUrl!).responseImage { response in
             debugPrint(response)
@@ -59,15 +92,12 @@ class MenuViewController: UIViewController,UITableViewDataSource, UITableViewDel
                 cell.CollectionImage.image = image
             }
         }
-        
         return cell
     }
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //fetching data from web api
         Alamofire.request(URL_GET_DATA).responseJSON { response in
             
@@ -79,38 +109,32 @@ class MenuViewController: UIViewController,UITableViewDataSource, UITableViewDel
                 
                 //traversing through all elements of the array
                 for i in 0..<collectionArray.count{
-                    
-                    //adding hero values to the hero list
+                    //adding values to the collection list
                     self.collectionlists.append(Collections(
-                        name: (collectionArray[i] as AnyObject).value(forKey: "name") as? String,
-                        imageUrl: (collectionArray[i] as AnyObject).value(forKey: "imageurl") as? String
+                       id: (collectionArray[i] as AnyObject).value(forKey: "id") as? String,
+                       name: (collectionArray[i] as AnyObject).value(forKey: "name") as? String,
+                       imageUrl: (collectionArray[i] as AnyObject).value(forKey: "imageurl") as? String,
+                       itemurl: (collectionArray[i] as AnyObject).value(forKey: "itemurl") as? String
                     ))
-                    
                 }
-                
                 //displaying data in tableview
                 self.MenuTableView.reloadData()
             }
-            
         }
         self.MenuTableView.reloadData()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //to perform segue to load ItemViewController
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // to go back Account page
+    @IBAction func goToAccountPage(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToAccount", sender: self)
     }
-    */
-
 }
