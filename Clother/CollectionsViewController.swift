@@ -68,6 +68,9 @@ class CollectionsViewController:  UIViewController, UIApplicationDelegate {
                         itemDetailImagesUrl: (itemsArray[i] as AnyObject).value(forKey: "itemDetailImagesUrl") as? [String]
                     ))
                 }
+                //To Shuffle items - to display items in different order to different users
+                self.cItems.shuffle()
+                
                 print("itemurl at index 0")
                 print(self.cItems[0].itemUrl ?? "correct")
                 print("cItems count")

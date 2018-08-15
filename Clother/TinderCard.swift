@@ -81,7 +81,7 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         {
         // To perform swipe for detail images
         swipeGesture.delegate = self
-        let directions: [UISwipeGestureRecognizerDirection] = [ .right, .left]
+        let directions: [UISwipeGestureRecognizerDirection] = [ .up, .down]
         for direction in directions {
             swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeImage(_:)))
             addGestureRecognizer(swipeGesture)
@@ -95,10 +95,14 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         //
         
         //To perform tinder
-        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
+     // if(swipeGesture.direction != .up   || swipeGesture.direction != .down)
+    // {
+        
+       panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
         panGestureRecognizer.delegate=self
-        //
+        //  }
+   
         
     //To display Collection items from url to image
         let backGroundImageView = UIImageView(frame:bounds)
@@ -138,14 +142,16 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
     }
     
     //UIGestureDelegate method
+    //Delaying the recognition of a pan gesture until after a swipe fails
+   
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+                             shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == self.panGestureRecognizer &&
             otherGestureRecognizer == self.swipeGesture {
-              print("inside shouldRequireFailureOf true")
+              print("inside shouldRequireFailureOf false")
             return false
         }
-        print("inside shouldRequireFailureOf false")
+        print("inside shouldRequireFailureOf true")
         return true
     }
     
@@ -154,7 +160,7 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
   
     @objc func swipeImage(_ gestureRecognizer: UISwipeGestureRecognizer) {
           var index=0;
-        if gestureRecognizer.direction == .right {
+        if gestureRecognizer.direction == .down {
             index += 1
             if index >= arrPagePhoto.count - 1 {
                 index = 0
@@ -164,7 +170,7 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
                 print("page",pageControl.currentPage )
             }
                }
-            else if gestureRecognizer.direction == .left {
+            else if gestureRecognizer.direction == .up {
                 index -= 1
                 if index < 0 {
                     index = arrPagePhoto.count - 1
@@ -173,14 +179,14 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
                     pageControl.currentPage = index
                     print("page",pageControl.currentPage )
                 }
-            }
+        }
         }
     //
     
     
    // To perform tinder
     @objc func beingDragged(_ gestureRecognizer: UIPanGestureRecognizer) {
-        
+    
         xFromCenter = gestureRecognizer.translation(in: self).x
         yFromCenter = gestureRecognizer.translation(in: self).y
         switch gestureRecognizer.state {
@@ -191,6 +197,9 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
             
         //in the middle of a swipe
         case .changed:
+           //if !(yFromCenter > 0 || yFromCenter > 0)
+           //{
+            print("inside")
             let rotationStrength = min(xFromCenter / ROTATION_STRENGTH, 1)
             let rotationAngel = .pi/8 * rotationStrength
             let scale = max(1 - fabs(rotationStrength) / SCALE_STRENGTH, SCALE_MAX)
@@ -200,8 +209,14 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
             
             self.transform = scaleTransform
             updateOverlay(xFromCenter)
+          /* }
+           else
+           {
+             print("outside")
+            gestureRecognizer.state = .cancelled
+            } */
             break;
-            
+ 
         // swipe ended
         case .ended:
             afterSwipeAction()
@@ -221,8 +236,9 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         //w355 h420 =   370 460 iphone6
         //w394 h509 =  414 549 iphone6plus
         
-        pageControl = UIPageControl(frame: CGRect(x: frame.size.width - (frame.size.width + 20), y: frame.size.height - (frame.size.height + 40), width: 100, height: 100))
+        pageControl = UIPageControl(frame: CGRect(x: frame.size.width - (frame.size.width + 20), y: frame.size.height - (frame.size.height + 30), width: 100, height: 100))
         // print("frame width=",frame.size.width,"frame height=",frame.size.height)
+        pageControl.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2));
             pageControl.numberOfPages = arrPagePhoto.count
             pageControl.currentPage = 0
             pageControl.tintColor = UIColor.black

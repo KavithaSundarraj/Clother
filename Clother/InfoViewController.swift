@@ -17,7 +17,7 @@ class InfoViewController: UIViewController {
     var gender: String? = nil
     let user = Auth.auth().currentUser
     
-    var age = ["20-30","30-40","40-50","50-60","60-70","70-80","80+"]
+    var age = ["20-29","30-39","40-49","50-59","60-69","70-79","80+"]
     var country = ["Sweden","Other"]
     
     //drop down for age
@@ -33,6 +33,10 @@ class InfoViewController: UIViewController {
     }
     @IBAction func radioFemale(_ sender: Any) {
         gender="Female"
+    }
+    
+    @IBAction func radioOthers(_ sender: Any) {
+        gender="Others"
     }
     //
     
