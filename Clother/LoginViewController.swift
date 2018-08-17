@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     //Textfields for email and password
     @IBOutlet weak var emailTextFieldName: UITextField!
@@ -40,11 +40,14 @@ class LoginViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //Function to dismiss keyboard
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    //Hide Keyboard when user touches outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //Function to dismiss keyboard - presses return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        //or
-        //self.view.endEditing(true)
         return true
     }
     
@@ -54,6 +57,8 @@ class LoginViewController: UIViewController {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
+        self.emailTextFieldName.delegate = self
+        self.passwordTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {

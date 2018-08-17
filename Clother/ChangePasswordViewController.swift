@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ChangePasswordViewController: UIViewController {
+class ChangePasswordViewController: UIViewController , UITextFieldDelegate {
 
     @IBOutlet weak var newPassword: UITextField!
     
@@ -69,13 +69,14 @@ class ChangePasswordViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    //Hide Keyboard when user touches outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
-    //Function to dismiss keyboard
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
+    //Function to dismiss keyboard - presses return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        //or
-        //self.view.endEditing(true)
         return true
     }
     
@@ -84,6 +85,8 @@ class ChangePasswordViewController: UIViewController {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
+        self.newPassword.delegate = self
+        self.repeatPassword.delegate = self
     }
 
     override func didReceiveMemoryWarning() {

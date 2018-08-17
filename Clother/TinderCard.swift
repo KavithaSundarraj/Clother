@@ -236,7 +236,7 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         //w355 h420 =   370 460 iphone6
         //w394 h509 =  414 549 iphone6plus
         
-        pageControl = UIPageControl(frame: CGRect(x: frame.size.width - (frame.size.width + 20), y: frame.size.height - (frame.size.height + 30), width: 100, height: 100))
+        pageControl = UIPageControl(frame: CGRect(x: frame.size.width - (frame.size.width + 20), y: frame.size.height - (frame.size.height + 20), width: 100, height: 100))
         // print("frame width=",frame.size.width,"frame height=",frame.size.height)
         pageControl.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2));
             pageControl.numberOfPages = arrPagePhoto.count

@@ -23,8 +23,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //the Web API URL
-    let URL_GET_DATA = "file:///Users/dsv/Desktop/Clother/data.json"
-  //let URL_GET_DATA = "https://clother.azurewebsites.net/api/collections"
+    //let URL_GET_DATA = "file:///Users/dsv/Desktop/Clother/data.json"
+  let URL_GET_DATA = "https://clother.azurewebsites.net/api/collections"
     //a list to store collections
     var collectionlists = [Collections]()
    

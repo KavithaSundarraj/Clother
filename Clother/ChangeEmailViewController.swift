@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ChangeEmailViewController: UIViewController {
+class ChangeEmailViewController: UIViewController , UITextFieldDelegate {
     var email: String? = nil
     let user = Auth.auth().currentUser
     @IBOutlet weak var currentUserEmail: UILabel!
@@ -72,12 +72,14 @@ class ChangeEmailViewController: UIViewController {
     }
     
     
-    //Function to dismiss keyboard
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
+    //Hide Keyboard when user touches outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //Function to dismiss keyboard - presses return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        //or
-        //self.view.endEditing(true)
         return true
     }
     
@@ -87,7 +89,8 @@ class ChangeEmailViewController: UIViewController {
             FirebaseApp.configure()
         }
         currentUserEmail.text = user?.email
-       
+        self.newEmail.delegate = self
+        self.repeatEmail.delegate = self
        
     }
 
