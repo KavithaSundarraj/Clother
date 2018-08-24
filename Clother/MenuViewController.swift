@@ -23,8 +23,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //the Web API URL
-    //let URL_GET_DATA = "file:///Users/dsv/Desktop/Clother/data.json"
-  let URL_GET_DATA = "https://clother.azurewebsites.net/api/collections"
+   let URL_GET_DATA = "https://clother.azurewebsites.net/api/collections"
+    
     //a list to store collections
     var collectionlists = [Collections]()
    
@@ -40,9 +40,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         {
             destination.collectionsId = collectionlists [blogIndex].id!
             destination.itemsurl = collectionlists [blogIndex].itemurl!
-            print(collectionlists[blogIndex].id!)
-            print("items")
-          print(collectionlists [blogIndex].itemurl!)
+            //print(collectionlists[blogIndex].id!)
+            //print("items")
+          //print(collectionlists [blogIndex].itemurl!)
         }
     }
     

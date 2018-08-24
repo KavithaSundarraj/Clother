@@ -43,8 +43,8 @@ class CollectionsViewController:  UIViewController, UIApplicationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(itemsurl)
-        print(collectionsId)
+        //print(itemsurl)
+        //print(collectionsId)
         //to fetch items from itemsurljson --------
         
         //fetching data from web api
@@ -61,7 +61,7 @@ class CollectionsViewController:  UIViewController, UIApplicationDelegate {
                 //traversing through all elements of the array
                 for i in 0..<itemsArray.count{
                     
-                    //adding hero values to the hero list
+                    //adding item values to the items list
                     self.cItems.append(items(
                         itemId: (itemsArray[i] as AnyObject).value(forKey: "itemId") as? String,
                         itemUrl: (itemsArray[i] as AnyObject).value(forKey: "itemUrl") as? String,

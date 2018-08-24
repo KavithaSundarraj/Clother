@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "leonardo-burgos-355530.jpg",
+      "filename" : "heading.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "heading@2x.png",
       "scale" : "2x"
     },
     {

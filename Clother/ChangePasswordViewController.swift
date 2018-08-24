@@ -12,8 +12,11 @@ import Firebase
 class ChangePasswordViewController: UIViewController , UITextFieldDelegate {
 
     @IBOutlet weak var newPassword: UITextField!
-    
     @IBOutlet weak var repeatPassword: UITextField!
+    var email: String? = nil
+    let user = Auth.auth().currentUser
+    @IBOutlet weak var currentUserEmail: UILabel!
+    
     
     @IBAction func ChangePasswordConfirmButton(_ sender: UIButton) {
         let pass = newPassword.text
@@ -56,7 +59,6 @@ class ChangePasswordViewController: UIViewController , UITextFieldDelegate {
         let alert = UIAlertController(title: "Password Mismatch", message: "Please Re-Enter Password.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
-        //alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
         self.repeatPassword.text = ""
@@ -65,6 +67,7 @@ class ChangePasswordViewController: UIViewController , UITextFieldDelegate {
             }
      }
     
+    //Button to perform segue - to go back account page
     @IBAction func goToAccountPageFromPasswordChange(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -85,6 +88,7 @@ class ChangePasswordViewController: UIViewController , UITextFieldDelegate {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
+        currentUserEmail.text = user?.email
         self.newPassword.delegate = self
         self.repeatPassword.delegate = self
     }
@@ -94,7 +98,4 @@ class ChangePasswordViewController: UIViewController , UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
-    
-
 }

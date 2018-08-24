@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "leio-mclaren-307296.jpg",
+      "filename" : "thanks.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "thanks@2x.png",
       "scale" : "2x"
     },
     {

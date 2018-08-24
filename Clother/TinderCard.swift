@@ -50,12 +50,21 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
     var likes = Int()
     var dislikes = Int()
     
+    
+    
+    //To post likes to url
+    // variable to store parameter
+    var itemid = String()
+    var review = Bool()
+    let url = "https://clother.azurewebsites.net/newitem/review/"
+    
     //method called first from collectionViewController
     public init(frame: CGRect, value: items) {
         super.init(frame: frame)
         arrPagePhoto = value.itemDetailImagesUrl!
         likes = value.likes!
         dislikes = value.dislikes!
+        itemid = value.itemId!
         setupView(at: value.itemUrl!)
         
     }
@@ -92,16 +101,9 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
             
         }
         
-        //
-        
-        //To perform tinder
-     // if(swipeGesture.direction != .up   || swipeGesture.direction != .down)
-    // {
-        
        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
         panGestureRecognizer.delegate=self
-        //  }
    
         
     //To display Collection items from url to image
@@ -112,7 +114,7 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         Alamofire.request(Url).responseImage { response in
             debugPrint(response)
             if let image = response.result.value {
-                
+                backGroundImageView.backgroundColor = UIColor.white
                 backGroundImageView.image = image
                 }
             }
@@ -120,8 +122,7 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         
         backGroundImageView.clipsToBounds = true;
         addSubview(backGroundImageView)
- 
-   
+
         imageViewStatus = UIImageView(frame: CGRect(x: (frame.size.width / 2) - 37.5, y: 25, width: 75, height: 75))
         imageViewStatus.alpha = 0
         addSubview(imageViewStatus)
@@ -130,10 +131,9 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         overLayImage.alpha = 0
         addSubview(overLayImage)
         
+         //page dots
         if(arrPagePhoto.count>0)
         {
-        //page dots
-        //pageControl.delegate = self
         configurePageControl()
         addSubview(pageControl)
         }
@@ -197,8 +197,6 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
             
         //in the middle of a swipe
         case .changed:
-           //if !(yFromCenter > 0 || yFromCenter > 0)
-           //{
             print("inside")
             let rotationStrength = min(xFromCenter / ROTATION_STRENGTH, 1)
             let rotationAngel = .pi/8 * rotationStrength
@@ -209,14 +207,7 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
             
             self.transform = scaleTransform
             updateOverlay(xFromCenter)
-          /* }
-           else
-           {
-             print("outside")
-            gestureRecognizer.state = .cancelled
-            } */
             break;
- 
         // swipe ended
         case .ended:
             afterSwipeAction()
@@ -291,6 +282,23 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         // To make update of items likes and dislikes in json
         likes = likes + 1
         print("likes", likes)
+        review = true
+       // ----------
+        //To hit url - to post likes
+        
+        let parameters = [
+            "id": itemid,
+            "review": review
+            ] as [String : Any]
+        Alamofire.request(url, method:.post, parameters:parameters,encoding: JSONEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success:
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+            //-------
+        }
         
         
     }
@@ -309,6 +317,23 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         print("WATCHOUT LEFT")
         dislikes = dislikes + 1
         print("dislikes", dislikes)
+        review = false
+        // ----------
+        //To hit url - to post likes
+        
+        let parameters = [
+            "id": itemid,
+            "review": review
+            ] as [String : Any]
+        Alamofire.request(url, method:.post, parameters:parameters,encoding: JSONEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success:
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+             }
+            //-------
         
     }
     
@@ -332,6 +357,23 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         print("WATCHOUT RIGHT ACTION")
         likes = likes + 1
         print("likes", likes)
+        review = true
+        // ----------
+        //To hit url - to post likes
+    
+        let parameters = [
+            "id": itemid,
+            "review": review
+            ] as [String : Any]
+        Alamofire.request(url, method:.post, parameters:parameters,encoding: JSONEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success:
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+             }
+            //-------
     }
     
     // left click action
@@ -354,6 +396,23 @@ class TinderCard: UIView, UIGestureRecognizerDelegate {
         print("WATCHOUT LEFT ACTION")
         dislikes = dislikes + 1
         print("dislikes", dislikes)
+        review = false
+        // ----------
+        //To hit url - to post likes
+        
+        let parameters = [
+            "id": itemid,
+            "review": review
+            ] as [String : Any]
+        Alamofire.request(url, method:.post, parameters:parameters,encoding: JSONEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success:
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+             }
+            //-------
     }
     
     func discardCard(){

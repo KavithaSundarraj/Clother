@@ -12,12 +12,9 @@ import Firebase
 class ChangeEmailViewController: UIViewController , UITextFieldDelegate {
     var email: String? = nil
     let user = Auth.auth().currentUser
-    @IBOutlet weak var currentUserEmail: UILabel!
     
-  
+    @IBOutlet weak var currentUserEmail: UILabel!
     @IBOutlet weak var newEmail: UITextField!
-
-
     @IBOutlet weak var repeatEmail: UITextField!
     
 
@@ -35,15 +32,13 @@ class ChangeEmailViewController: UIViewController , UITextFieldDelegate {
         user?.updateEmail(to: email!) { error in
             if let error = error {
                 print(error)
-                print("Email updation Failure")
+                //print("Email updation Failure")
                 
             } else {
-              print("Email updation success")
+              //print("Email updation success")
                 let alert = UIAlertController(title: "Email Changed", message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Continue", style: .default){
                     UIAlertAction in
-                    // Insert code to run on button click below
-                    //self.dismiss(animated: true, completion: nil)
                     self.performSegue(withIdentifier: "EmailUpdatedSegue", sender: self)
                 })
                 self.present(alert, animated: true)
@@ -59,14 +54,10 @@ class ChangeEmailViewController: UIViewController , UITextFieldDelegate {
             self.present(alert, animated: true)
             self.newEmail.text = ""
             self.repeatEmail.text = ""
-            
         }
-
- 
-        
     }
     
- 
+    //Button to perform segue - to go back account page
     @IBAction func goBackAccountPage(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
