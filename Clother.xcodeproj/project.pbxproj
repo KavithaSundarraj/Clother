@@ -209,7 +209,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		8B6F64CC7516BD414BDC173C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -426,7 +426,7 @@
 				DEVELOPMENT_TEAM = D6V75AM9P7;
 				INFOPLIST_FILE = Clother/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.DSV.Clother;
+				PRODUCT_BUNDLE_IDENTIFIER = DSV.Clother;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -445,7 +445,7 @@
 				DEVELOPMENT_TEAM = D6V75AM9P7;
 				INFOPLIST_FILE = Clother/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.DSV.Clother;
+				PRODUCT_BUNDLE_IDENTIFIER = DSV.Clother;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

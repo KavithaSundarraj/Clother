@@ -25,6 +25,7 @@ class CollectionsViewController:  UIViewController, UIApplicationDelegate {
     
     // variable to store items url
     var cItems = [items]()
+     var beforeshuffled = [items]();
     
     //variables for Cards
     var currentIndex = 0
@@ -56,25 +57,33 @@ class CollectionsViewController:  UIViewController, UIApplicationDelegate {
                 //converting json to NSArray
                 let itemsArray : NSArray  = json as! NSArray
                 
-                print("itemarray count")
-                print(itemsArray.count)
+                //print("itemarray count")
+                //print(itemsArray.count)
                 //traversing through all elements of the array
                 for i in 0..<itemsArray.count{
                     
                     //adding item values to the items list
-                    self.cItems.append(items(
+                    self.beforeshuffled.append(items(
                         itemId: (itemsArray[i] as AnyObject).value(forKey: "itemId") as? String,
                         itemUrl: (itemsArray[i] as AnyObject).value(forKey: "itemUrl") as? String,
                         itemDetailImagesUrl: (itemsArray[i] as AnyObject).value(forKey: "itemDetailImagesUrl") as? [String]
                     ))
                 }
                 //To Shuffle items - to display items in different order to different users
-                self.cItems.shuffle()
+                //self.cItems.shuffle()
+                for _ in 0..<self.beforeshuffled.count
+                {
+                    let rand = Int(arc4random_uniform(UInt32(self.beforeshuffled.count)))
+                    
+                    self.cItems.append(self.beforeshuffled[rand])
+                    
+                    self.beforeshuffled.remove(at: rand)
+                }
                 
-                print("itemurl at index 0")
+                /*print("itemurl at index 0")
                 print(self.cItems[0].itemUrl ?? "correct")
                 print("cItems count")
-                print(self.cItems.count)
+                print(self.cItems.count)*/
                 //displaying data
                 self.view.layoutIfNeeded()
                 self.loadCardValues()
@@ -82,9 +91,9 @@ class CollectionsViewController:  UIViewController, UIApplicationDelegate {
          }
     
         //--------
-        print("cItems count and cItems")
+        /*print("cItems count and cItems")
         print(cItems.count)
-        print(cItems)
+        print(cItems)*/
       
     }
  
