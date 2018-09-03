@@ -11,6 +11,7 @@ import Firebase
 
 class InfoViewController: UIViewController {
     
+    @IBOutlet weak var `continue`: UIButton!
     //defining firebase reference var
     var refCustomers: DatabaseReference!
     
@@ -35,19 +36,19 @@ class InfoViewController: UIViewController {
     
     //Button to save details and perform segue to menu page
     @IBAction func showMenuPage(_ sender: UIButton) {
-        //To check all entries are filled - alert
+       /* //To check all entries are filled - alert
         if(btnDrop3.currentTitle == "Select Gender" || btnDrop.currentTitle == "Select Age" || btnDrop2.currentTitle == "Select Country")
         {
         let alert = UIAlertController(title: "Error", message: "Please Enter all details.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
         self.present(alert, animated: true)
             }
-        else  {
+        else  { */
         //To perform add customer detail to Firebase
         addCustomer()
         //To perform segue
         self.performSegue(withIdentifier: "fromInfoToMenuPage", sender: self)
-                }
+               // }
     }
     
     //Function to add customer detail to firebase
@@ -72,6 +73,7 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        `continue`.layer.cornerRadius = 5
         //tableview is hidden initially
         tblView.isHidden = true
         tblView2.isHidden = true

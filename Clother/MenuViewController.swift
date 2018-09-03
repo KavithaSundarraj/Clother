@@ -9,9 +9,12 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import Firebase
 
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    //user
+    var email: String? = nil
+    let user = Auth.auth().currentUser
     // Table view outlet
     @IBOutlet weak var tableView: UITableView!
     //our table view
@@ -97,6 +100,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //To check - user or guest
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
+        email = user?.email
         
         //fetching data from web api
         Alamofire.request(URL_GET_DATA).responseJSON { response in
@@ -135,6 +143,24 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // to go back Account page
     @IBAction func goToAccountPage(_ sender: UIButton) {
+       if (email == nil)
+       {
+        let alert = UIAlertController(title: "Please create Account", message: "It's recommended to create account before continuing.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { action in
+            self.performSegue(withIdentifier: "goToCreateAccount", sender: self)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Logout", style: .default, handler: { action in
+            self.performSegue(withIdentifier: "guestSeguetoComeOut", sender: self)
+        }))
+        
+        self.present(alert, animated: true)
+           }
+        else
+        {
         self.performSegue(withIdentifier: "goToAccount", sender: self)
+           }
     }
 }

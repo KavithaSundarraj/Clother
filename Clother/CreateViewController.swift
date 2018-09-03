@@ -16,9 +16,15 @@ class CreateViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     
+    @IBOutlet weak var guest: UIButton!
     //Back Button - to connect to Main Page
     @IBAction func goToMainPage(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func guestLogin(_ sender: Any) {
+        self.performSegue(withIdentifier: "guestSegue", sender: self)
     }
     
     //Create Button - Create new user with email and password and perform segue to Menu page
@@ -65,6 +71,7 @@ class CreateViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guest.layer.cornerRadius = 6
         //initialising firebase
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
