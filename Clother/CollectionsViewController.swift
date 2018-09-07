@@ -10,6 +10,7 @@ let  SEPERATOR_DISTANC = 8;
 let  TOPYAXIS = 75;
 import UIKit
 import Alamofire
+import Firebase
 
 class CollectionsViewController:  UIViewController, UIApplicationDelegate {
    
@@ -18,6 +19,10 @@ class CollectionsViewController:  UIViewController, UIApplicationDelegate {
     // @IBOutlet weak var buttonUndo: UIButton!
     @IBOutlet weak var viewActions: UIView!
     @IBOutlet weak var viewActionHeightConstrain: NSLayoutConstraint!
+    
+    //user
+    var email: String? = nil
+    let user = Auth.auth().currentUser
     
     // variable to store collection id and collection items - passed from MenuViewController
     var collectionsId = String()
@@ -39,13 +44,31 @@ class CollectionsViewController:  UIViewController, UIApplicationDelegate {
     
     //Button click - go to account page
     @IBAction func goToAccountPage(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToAcountfromCollectionsPage", sender: self)
+        if (email == nil)
+        {
+            let alert = UIAlertController(title: "Please create Account", message: "It's recommended to create account before continuing.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { action in
+                self.performSegue(withIdentifier: "collectionToCreateSegue", sender: self)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+        else
+        {
+            performSegue(withIdentifier: "goToAcountfromCollectionsPage", sender: self)
+        }
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(itemsurl)
-        //print(collectionsId)
+        //To check - user or guest
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
+        email = user?.email
+        
         //to fetch items from itemsurljson --------
         
         //fetching data from web api

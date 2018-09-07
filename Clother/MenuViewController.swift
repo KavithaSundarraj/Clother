@@ -129,8 +129,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.MenuTableView.reloadData()
             }
         }
-        self.MenuTableView.reloadData()
-        
         //to perform segue to load ItemViewController
         tableView.delegate = self
         tableView.dataSource = self

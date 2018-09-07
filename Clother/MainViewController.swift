@@ -9,6 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
     //Login Button - Segue to connect Login Page
     @IBAction func goToLogInPage(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToLogIn", sender: self)
@@ -22,6 +23,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+            
     }
 
     override func didReceiveMemoryWarning() {
